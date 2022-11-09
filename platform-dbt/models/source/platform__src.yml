@@ -1,0 +1,38 @@
+version: 2
+sources:
+  - name: platform__abc
+    schema: abc
+    description: Tables written by R&D and serve the platform
+    config:
+      tags:
+        - platform
+    tables:
+      - name: accounts
+        description: accounts (also known as Stores)
+        columns:
+          - name: id
+            type: bigint
+            tests:
+              - not_null
+              - unique
+          - name: app_key
+            type: string
+            tests:
+              - not_null
+              - unique
+          - name: upsolver_schema_version
+            description: '{{ doc("platform__accounts_upsolver_schema_version") }}'
+            type: int
+            tests: []
+          - name: processing_time
+            description: '{{ doc("platform__accounts_processing_time") }}'
+            type: timestamp
+            tests: []
+          - name: ts_ms
+            description: '{{ doc("platform__accounts_ts_ms") }}'
+            type: timestamp
+            tests: []
+          - name: domain
+            description: '{{ doc("platform__accounts_domain") }}'
+            type: string
+            tests: []

@@ -1,0 +1,38 @@
+version: 2
+models:
+  - name: platform_stg__accounts
+    description: stores account
+    config:
+      tags:
+        - platform
+    columns:
+      - name: id
+        description: '{{ doc("platform_stg__accounts_id") }}'
+        type: bigint
+        tests:
+          - unique
+          - not_null
+      - name: app_key
+        description: '{{ doc("platform_stg__accounts_app_key") }}'
+        type: string
+        tests: []
+      - name: domain
+        description: '{{ doc("platform_stg__accounts_domain") }}'
+        type: string
+        tests: []
+      - name: slug
+        description: '{{ doc("platform_stg__accounts_slug") }}'
+        type: string
+        tests: []
+      - name: is_test
+        description: '{{ doc("platform_stg__accounts_is_test") }}'
+        type: bigint
+        tests: []
+    model_path: /workspaces/data-applications/models/platform/staging/base/
+    meta:
+      model_ownership:
+        group: platform
+        team: yyy
+        created_by: abc@company.com
+    tests: []
+metrics: []

@@ -1,0 +1,50 @@
+version: 2
+models:
+  - name: platform__dim_stores
+    description: platform__dim_stores
+    config:
+      tags:
+        - platform
+    columns:
+      - name: store_id
+        description: '{{ doc("platform__dim_stores_store_id") }}'
+        type: bigint
+        tests: []
+      - name: organization_id
+        description: '{{ doc("platform__dim_stores_organization_id") }}'
+        type: int
+        tests: []
+      - name: app_key
+        description: '{{ doc("platform__dim_stores_app_key") }}'
+        type: string
+        tests: []
+      - name: store_domain
+        description: '{{ doc("platform__dim_stores_store_domain") }}'
+        type: string
+        tests: []
+      - name: is_test_store
+        description: '{{ doc("platform__dim_stores_is_test_store") }}'
+        type: bigint
+        tests: []
+      - name: is_active_store
+        description: '{{ doc("platform__dim_stores_is_active_store") }}'
+        type: int
+        tests: []
+      - name: dwh_updated_at
+        description: '{{ doc("platform__dim_stores_dwh_updated_at") }}'
+        type: timestamp
+        tests: []
+    model_path: models/marts/core
+    meta:
+      primary-key: store_id
+      foreign-keys:
+        - foreign-key: store_id
+          ref-table: platform_stg__stores_enrichment
+          ref-key: store_id
+          ref-relationship: one-to-one
+        - foreign-key: app_key
+          ref-table: loyalty__dim_merchants
+          ref-key: app_key
+          ref-relationship: one-to-one
+    tests: []
+metrics: []
